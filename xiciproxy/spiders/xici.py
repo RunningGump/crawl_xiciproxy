@@ -40,17 +40,15 @@ class XiCiSpider(scrapy.Spider):
                 # 下面的ip字段是传递给check_available方法的信息,方便检测是否可隐藏ip
                 '_proxy_ip':ip,
             }
-            try:
-                yield scrapy.Request(url, callback=self.check_available, meta=meta, dont_filter=True)
-            except Exception as e:
-                print(proxy,e)
+ 
+            yield scrapy.Request(url, callback=self.check_available, meta=meta, dont_filter=True)
+ 
 
     def check_available(self, response):
         proxy_ip = response.meta['_proxy_ip']
 
         # 判断代理是否具有隐藏IP功能
         if proxy_ip == json.loads(response.text)['origin']:
-            print(response.meta['proxy'],'is OK')
             yield{
                 'proxy': response.meta['proxy']
             }
