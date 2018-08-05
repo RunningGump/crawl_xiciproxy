@@ -21,4 +21,4 @@ $ scrapy crawl xici -o out.json -a num_pages=10 -a typ=nn
 
 ---
 
-小白入门详细教程：[个人博客](https://runninggump.github.io/)
+详细教程：[个人博客](https://runninggump.github.io/)
